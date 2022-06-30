@@ -35,7 +35,7 @@ public class Destroyer : MonoBehaviour
     private void SpawnSpring()
     {
         Vector3 position = new Vector2(Random.Range(-levelWidth, levelWidth), springYPos);
-        springYPos += Random.Range(10, 20);
+        springYPos += Random.Range(10, 30);
         Instantiate(springPrefab, position, Quaternion.identity);
     }
 
