@@ -4,8 +4,27 @@ using UnityEngine;
 
 public class Title : MonoBehaviour
 {
-    public void StartGame()
+    private void Start()
     {
-        return;
+        StopGame();
+    }
+
+    private void Update()
+    {
+        if(Input.anyKeyDown)
+        {
+            ResumeGame();
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }
