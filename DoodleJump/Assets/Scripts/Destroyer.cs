@@ -11,6 +11,8 @@ public class Destroyer : MonoBehaviour
     [SerializeField] private float platformYPos;
     [SerializeField] private float springYPos;
 
+    private GameOverScreen gameOverScreen;
+
     void Start()
     {
         // Beggining with few Platforms.
@@ -41,9 +43,10 @@ public class Destroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if Camera goes up, destroy old platforms and spawn a new things.
+        
         if(collision.CompareTag("Platform"))
         {
-            // if Camera goes up, destroy old platforms and spawn a new things.
             SpawnPlatform();
             Destroy(collision.gameObject);
         }
@@ -57,7 +60,7 @@ public class Destroyer : MonoBehaviour
         else if(collision.CompareTag("Player"))
         {
             // Game Over
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject);    
         }
     }
 }
