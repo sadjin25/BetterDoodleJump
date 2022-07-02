@@ -5,9 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public float movementSpeed = 6f;
+    private float movementSpeed = 6f;
 
     private float movement = 0f;
+    private float inputHorizontal;
 
     Rigidbody2D rb;
 
@@ -17,16 +18,26 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();    
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        movement = Input.GetAxis("Horizontal") * movementSpeed;
-    }
 
     private void FixedUpdate()
     {
+        movement = Input.GetAxis("Horizontal") * movementSpeed;
+
         Vector2 velocity = rb.velocity;
         velocity.x = movement;
         rb.velocity = velocity;
+
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        // Flip the sprite
+        if(inputHorizontal > 0)
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if (inputHorizontal < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }
