@@ -6,9 +6,10 @@ public class Destroyer : MonoBehaviour
 {
     [SerializeField] private GameObject platformPrefab;
     [SerializeField] private GameObject springPrefab;
-    [SerializeField] private float levelWidth;
+    [SerializeField] private GameObject BKPlatformPrefab;
     [SerializeField] private float rangeX;
     [SerializeField] private float platformYPos;
+    [SerializeField] private float BKPlatformYPos;
     [SerializeField] private float springYPos;
 
     private GameOverScreen gameOverScreen;
@@ -24,6 +25,7 @@ public class Destroyer : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             SpawnSpring();
+            SpawnBKPlatform();
         }
     }
 
@@ -36,9 +38,17 @@ public class Destroyer : MonoBehaviour
 
     private void SpawnSpring()
     {
-        Vector3 position = new Vector2(Random.Range(-levelWidth, levelWidth), springYPos);
-        springYPos += Random.Range(10, 30);
+        Vector3 position = new Vector2(Random.Range(-rangeX, rangeX), springYPos);
         Instantiate(springPrefab, position, Quaternion.identity);
+        springYPos += Random.Range(10, 30);
+    }
+
+    private void SpawnBKPlatform()
+    {
+        BKPlatformYPos = platformYPos;
+        BKPlatformYPos += Random.Range(1, 4);
+        Vector3 position = new Vector2(Random.Range(-rangeX, rangeX), BKPlatformYPos);
+        Instantiate(BKPlatformPrefab, position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,19 +58,18 @@ public class Destroyer : MonoBehaviour
         if(collision.CompareTag("Platform"))
         {
             SpawnPlatform();
-            Destroy(collision.gameObject);
         }
 
         else if (collision.CompareTag("Spring"))
         {
             SpawnSpring();
-            Destroy(collision.gameObject);
         }
 
-        else if(collision.CompareTag("Player"))
+        else if(collision.CompareTag("BKPlatform"))
         {
-            // Game Over
-            Destroy(collision.gameObject);    
+            SpawnBKPlatform();
         }
+
+        Destroy(collision.gameObject);
     }
 }
