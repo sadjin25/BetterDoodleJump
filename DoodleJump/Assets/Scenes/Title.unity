@@ -1284,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spring
       objectReference: {fileID: 0}
+    - target: {fileID: 3293157700432477924, guid: 60389b92cf563354b88655d6e70bbbc5, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60389b92cf563354b88655d6e70bbbc5, type: 3}
 --- !u!1001 &1669991608
@@ -1791,6 +1795,10 @@ PrefabInstance:
     - target: {fileID: 2358654254995242479, guid: 08dc7329be0a85a4a8b4136ccf14fc0b, type: 3}
       propertyPath: m_Name
       value: BKPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293157700432477924, guid: 08dc7329be0a85a4a8b4136ccf14fc0b, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08dc7329be0a85a4a8b4136ccf14fc0b, type: 3}
