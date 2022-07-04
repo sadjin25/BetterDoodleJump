@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Score scoreSystem;
+
     private float movementSpeed = 6f;
 
     private float movement = 0f;

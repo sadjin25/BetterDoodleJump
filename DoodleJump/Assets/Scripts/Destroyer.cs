@@ -11,9 +11,7 @@ public class Destroyer : MonoBehaviour
     [SerializeField] private float platformYPos;
     [SerializeField] private float BKPlatformYPos;
     [SerializeField] private float springYPos;
-
-    private GameOverScreen gameOverScreen;
-
+    
     void Start()
     {
         // Beggining with few Platforms.
@@ -70,6 +68,7 @@ public class Destroyer : MonoBehaviour
             SpawnBKPlatform();
         }
 
+        Debug.Log("destroy plz");
         Destroy(collision.gameObject);
     }
 }
